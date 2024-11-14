@@ -5,6 +5,7 @@ import { FaCircleQuestion } from 'react-icons/fa6'
 import { Link, useNavigate } from 'react-router-dom'
 import { app } from '../../config/auth'
 
+
 export const LogIn = () => {
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
@@ -77,12 +78,10 @@ export const LogIn = () => {
 					<Link to={'/register'} className='text-white text-start'>
 						You don't have an account?
 					</Link>
-
 					{error && <p className='text-red-500'>{error}</p>}
 					<button
 						className='w-full text-black p-4 text-lg bg-white rounded-xl font-medium'
-						onClick={handleLogin}
-					>
+						onClick={handleLogin}>
 						Continue
 					</button>
 				</form>

@@ -1,9 +1,9 @@
 import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth'
+import React, { useState } from 'react'
 import { BiArrowFromRight } from 'react-icons/bi'
 import { FaCircleQuestion } from 'react-icons/fa6'
 import { Link, useNavigate } from 'react-router-dom'
 import { app } from '../../config/auth'
-import { useState } from 'react'
 
 export const Register = () => {
 	const [email, setEmail] = useState('')

@@ -1,12 +1,12 @@
 import { createBrowserRouter } from 'react-router-dom'
 import { App } from '../App'
 import { Home } from '../pages/home/Home'
+import { Login } from '../pages/auth/Login'
+import { Register } from '../pages/auth/Register'
 import { MovieItem } from '../pages/movie-item/MovieItem'
 import { Movies } from '../pages/movies/Movies'
 import { Profile } from '../pages/profile/Profile'
 import { Series } from '../pages/series/Series'
-import { LogIn } from '../pages/auth/Login'
-import { Register } from '../pages/auth/Register'
 
 export const router = createBrowserRouter([
 	{

@@ -48,6 +48,7 @@ export const Profile = () => {
 							Please sign in to see your information.
 						</h2>
 					)}
+						<h2 className='text-white text-3xl font-bold'>Дима</h2>
 				</div>
 				<div>
 					<Button variant='primary' onClick={handleLogOut}>
