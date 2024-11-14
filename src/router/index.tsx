@@ -5,8 +5,18 @@ import { MovieItem } from '../pages/movie-item/MovieItem'
 import { Movies } from '../pages/movies/Movies'
 import { Profile } from '../pages/profile/Profile'
 import { Series } from '../pages/series/Series'
+import { LogIn } from '../pages/auth/Login'
+import { Register } from '../pages/auth/Register'
 
 export const router = createBrowserRouter([
+	{
+		path: '/login',
+		element: <LogIn />,
+	},
+	{
+		path: '/register',
+		element: <Register />,
+	},
 	{
 		path: '/',
 		element: <App />,
