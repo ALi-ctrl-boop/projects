@@ -1,3 +1,7 @@
+import { BiArrowFromRight } from 'react-icons/bi'
+import { FaCircleQuestion } from 'react-icons/fa6'
+import { Link } from 'react-router-dom'
+
 export const Register = () => {
 	return (
 		<div
