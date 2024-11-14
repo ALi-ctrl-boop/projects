@@ -1,12 +1,22 @@
 import { createBrowserRouter } from 'react-router-dom'
 import { App } from '../App'
 import { Home } from '../pages/home/Home'
+import { Login } from '../pages/auth/Login'
+import { Register } from '../pages/auth/Register'
 import { MovieItem } from '../pages/movie-item/MovieItem'
 import { Movies } from '../pages/movies/Movies'
 import { Profile } from '../pages/profile/Profile'
 import { Series } from '../pages/series/Series'
 
 export const router = createBrowserRouter([
+	{
+		path: '/login',
+		element: <Login />,
+	},
+	{
+		path: '/register',
+		element: <Register />,
+	},
 	{
 		path: '/',
 		element: <App />,
