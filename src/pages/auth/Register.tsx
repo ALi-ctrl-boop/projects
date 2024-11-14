@@ -25,7 +25,7 @@ export const Register = () => {
 
 	return (
 		<div
-			className='w-full h-screen flex justify-center items-center'
+			className='w-full h-screen flex justify-center items-center px-2'
 			style={{
 				backgroundImage:
 					'url("https://yastatic.net/s3/passport-auth-customs/customs/_/db6fdac6.jpg")',
