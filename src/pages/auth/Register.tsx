@@ -1,8 +1,28 @@
+import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth'
+import React, { useState } from 'react'
 import { BiArrowFromRight } from 'react-icons/bi'
 import { FaCircleQuestion } from 'react-icons/fa6'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { app } from '../../config/auth'
 
 export const Register = () => {
+const [email, setEmail] = useState('')
+const [password, setPassword] = useState('')
+const navigation = useNavigate()
+
+const handleLogin = (e: React.MouseEvent) => {
+	e.preventDefault()
+
+	createUserWithEmailAndPassword(getAuth(app), email, password)
+		.then(user => {
+			console.log('User signed in successfully!', user.user)
+			return navigation('/login')
+		})
+		.catch(err => {
+			console.error('Error creating user with email and password:', err)
+		})
+}
+
 	return (
 		<div
 			className='w-full h-screen flex justify-center items-center'
