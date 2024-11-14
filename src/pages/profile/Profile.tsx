@@ -1,4 +1,24 @@
+import { useEffect, useState } from 'react'
+import { Button } from '../../components/ui/button/Button'
+import { useNavigate } from 'react-router-dom'
+
 export const Profile = () => {
+	const [users, setUsers] = useState<IUsers | null>(null)
+	const navigation = useNavigate()
+
+	useEffect(() => {
+		const unsubscribe = onAuthStateChanged(getAuth(app), user => {
+			if (user) {
+				setUsers({ email: user.email ?? '' })
+			} else {
+				setUsers(null)
+				console.log('User  is signed out')
+				navigation('/login')
+			}
+		})
+
+		return () => unsubscribe()
+	}, [navigation])
 	return (
 		<div className='w-full flex flex-col items-center'>
 			<div className='w-[1440px] mt-6 flex items-center justify-between'>
