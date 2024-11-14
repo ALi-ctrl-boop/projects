@@ -1,6 +1,12 @@
+import { getAuth, onAuthStateChanged } from 'firebase/auth'
 import { useEffect, useState } from 'react'
-import { Button } from '../../components/ui/button/Button'
 import { useNavigate } from 'react-router-dom'
+import { Button } from '../../components/ui/button/Button'
+import { app } from '../../config/auth'
+
+type IUsers = {
+	email: string | null
+}
 
 export const Profile = () => {
 	const [users, setUsers] = useState<IUsers | null>(null)
@@ -19,6 +25,13 @@ export const Profile = () => {
 
 		return () => unsubscribe()
 	}, [navigation])
+
+	const handleLogOut = () => {
+		getAuth(app).signOut()
+		setUsers(null)
+		navigation('/login')
+	}
+
 	return (
 		<div className='w-full flex flex-col items-center'>
 			<div className='w-[1440px] mt-6 flex items-center justify-between'>
@@ -28,6 +41,13 @@ export const Profile = () => {
 						alt='profile'
 						className='w-24 h-24 rounded-2xl'
 					/>
+					{users ? (
+						<h2 className='text-white text-3xl font-bold'>{users?.email}</h2>
+					) : (
+						<h2 className='text-white text-xl font-bold'>
+							Please sign in to see your information.
+						</h2>
+					)}
 						<h2 className='text-white text-3xl font-bold'>Дима</h2>
 				</div>
 				<div>

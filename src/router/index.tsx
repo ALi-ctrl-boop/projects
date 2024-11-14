@@ -11,7 +11,7 @@ import { Series } from '../pages/series/Series'
 export const router = createBrowserRouter([
 	{
 		path: '/login',
-		element: <Login />,
+		element: <LogIn />,
 	},
 	{
 		path: '/register',

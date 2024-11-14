@@ -6,22 +6,22 @@ import { Link, useNavigate } from 'react-router-dom'
 import { app } from '../../config/auth'
 
 export const Register = () => {
-const [email, setEmail] = useState('')
-const [password, setPassword] = useState('')
-const navigation = useNavigate()
+	const [email, setEmail] = useState('')
+	const [password, setPassword] = useState('')
+	const navigation = useNavigate()
 
-const handleLogin = (e: React.MouseEvent) => {
-	e.preventDefault()
+	const handleLogin = (e: React.MouseEvent) => {
+		e.preventDefault()
 
-	createUserWithEmailAndPassword(getAuth(app), email, password)
-		.then(user => {
-			console.log('User signed in successfully!', user.user)
-			return navigation('/login')
-		})
-		.catch(err => {
-			console.error('Error creating user with email and password:', err)
-		})
-}
+		createUserWithEmailAndPassword(getAuth(app), email, password)
+			.then(user => {
+				console.log('User signed in successfully!', user.user)
+				return navigation('/login')
+			})
+			.catch(err => {
+				console.error('Error creating user with email and password:', err)
+			})
+	}
 
 	return (
 		<div
@@ -59,11 +59,15 @@ const handleLogin = (e: React.MouseEvent) => {
 				<form className='w-full flex flex-col mt-4 gap-4'>
 					<input
 						type='email'
+						value={email}
+						onChange={e => setEmail(e.target.value)}
 						placeholder='Enter your email'
 						className='w-full py-4 px-4 bg-transparent border border-[#2D2D32] rounded-xl text-white font-bold placeholder:text-2xl outline-none'
 					/>
 					<input
 						type='password'
+						value={password}
+						onChange={e => setPassword(e.target.value)}
 						placeholder='Enter your password'
 						className='w-full p-4 bg-transparent border border-[#2D2D32] rounded-xl text-white font-bold placeholder:text-2xl outline-none'
 					/>
@@ -72,6 +76,7 @@ const handleLogin = (e: React.MouseEvent) => {
 					</Link>
 					<button
 						className='w-full text-black p-4 text-lg bg-white rounded-xl font-medium'
+						onClick={handleLogin}
 					>
 						Continue
 					</button>

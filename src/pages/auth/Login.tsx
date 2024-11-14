@@ -5,26 +5,28 @@ import { FaCircleQuestion } from 'react-icons/fa6'
 import { Link, useNavigate } from 'react-router-dom'
 import { app } from '../../config/auth'
 
-export const Login = () => {
-const [email, setEmail] = useState('')
-const [password, setPassword] = useState('')
-const [error, setError] = useState('')
-const navigation = useNavigate()
 
-const handleLogin = (e: React.MouseEvent) => {
-	e.preventDefault()
-	setError('')
+export const LogIn = () => {
+	const [email, setEmail] = useState('')
+	const [password, setPassword] = useState('')
+	const [error, setError] = useState('')
+	const navigation = useNavigate()
 
-	signInWithEmailAndPassword(getAuth(app), email, password)
-		.then(user => {
-			console.log('User signed in successfully!', user.user)
-			return navigation('/')
-		})
-		.catch(err => {
-			console.error('Error creating user with email and password:', err)
-			setError('Invalid email or password. Please try again.')
-		})
-}
+	const handleLogin = (e: React.MouseEvent) => {
+		e.preventDefault()
+		setError('')
+
+		signInWithEmailAndPassword(getAuth(app), email, password)
+			.then(user => {
+				console.log('User signed in successfully!', user.user)
+				return navigation('/')
+			})
+			.catch(err => {
+				console.error('Error creating user with email and password:', err)
+				setError('Invalid email or password. Please try again.')
+			})
+	}
+
 	return (
 		<div
 			className='w-full h-screen flex justify-center items-center'
@@ -61,21 +63,25 @@ const handleLogin = (e: React.MouseEvent) => {
 				<form className='w-full flex flex-col mt-4 gap-4'>
 					<input
 						type='email'
+						value={email}
+						onChange={e => setEmail(e.target.value)}
 						placeholder='Enter your email'
 						className='w-full py-4 px-4 bg-transparent border border-[#2D2D32] rounded-xl text-white font-bold placeholder:text-2xl outline-none'
 					/>
 					<input
 						type='password'
+						value={password}
+						onChange={e => setPassword(e.target.value)}
 						placeholder='Enter your password'
 						className='w-full p-4 bg-transparent border border-[#2D2D32] rounded-xl text-white font-bold placeholder:text-2xl outline-none'
 					/>
 					<Link to={'/register'} className='text-white text-start'>
 						You don't have an account?
 					</Link>
-
+					{error && <p className='text-red-500'>{error}</p>}
 					<button
 						className='w-full text-black p-4 text-lg bg-white rounded-xl font-medium'
-					>
+						onClick={handleLogin}>
 						Continue
 					</button>
 				</form>
