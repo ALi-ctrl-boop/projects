@@ -13,6 +13,4 @@ const firebaseConfig = {
 
 export const app = initializeApp(firebaseConfig)
 
-import { initializeApp } from 'firebase/app'
-
 
